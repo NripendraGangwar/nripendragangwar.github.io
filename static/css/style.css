@@ -606,7 +606,7 @@ section {
 }
 
 .timeline-date {
-    color: var(--accent-blue);
+    color: var(--text-light); /* WAS: var(--accent-blue) */
     font-weight: 500;
     font-size: 0.9rem;
 }
@@ -711,7 +711,7 @@ section {
 .award-year {
     display: inline-block;
     background: rgba(100, 255, 218, 0.1);
-    color: var(--accent-blue);
+    color: var(--text-lightest); /* WAS: var(--accent-blue) */
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: 500;

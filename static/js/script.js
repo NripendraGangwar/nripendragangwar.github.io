@@ -1,11 +1,11 @@
 /**
- * Nripendra Gangwar - Interactive CV Script
+ * Nripendra Gangwar - Interactive CV Script (Dark Theme Version)
  *
  * This script handles:
  * 1. Mobile navigation menu toggle.
- * 2. Navbar behavior on scroll (hide/show and style change).
- * 3. Active link highlighting as the user scrolls through sections.
- * 4. "Animate on scroll" effects for various elements using Intersection Observer.
+ * 2. Navbar hide/show behavior on scroll.
+ * 3. Active link highlighting as the user scrolls.
+ * 4. "Animate on scroll" for skill progress bars and dashboard chart.
  */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            // The 'active' class on the toggle can be used to animate the bars into an 'X'
-            // Example CSS for the 'X' animation (add to your stylesheet):
-            /*
-            .nav-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-            .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
-            .nav-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-            */
             navToggle.classList.toggle('active');
         });
     }
@@ -46,37 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollHandler = () => {
         const scrollY = window.pageYOffset;
 
-        // Add 'scrolled' class to navbar after scrolling down
-        if (navbar) {
-            if (scrollY > 50) {
-                navbar.classList.add('scrolled');
-                // The 'scrolled' class can add a darker background for better visibility.
-                // Example CSS (add to your stylesheet):
-                /*
-                .navbar.scrolled {
-                    background: rgba(26, 26, 46, 0.7);
-                    box-shadow: var(--shadow-light);
-                }
-                */
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
-
         // Hide navbar on scroll down, show on scroll up
-        if (scrollY > lastScrollY && scrollY > 150) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
+        if (navbar) {
+            if (scrollY > lastScrollY && scrollY > 150) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollY = scrollY;
         }
-        lastScrollY = scrollY;
-
 
         // Highlight active navigation link
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 100;
+            const sectionTop = current.offsetTop - 150; // Adjusted offset for better accuracy
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                 currentSectionId = current.getAttribute('id');
             }
@@ -84,13 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('active-link');
-            if (link.getAttribute('href').includes(currentSectionId)) {
+            // Check if the link's href attribute contains the current section ID
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
                 link.classList.add('active-link');
-                // The 'active-link' class can mimic the hover state.
-                // Example CSS (add to your stylesheet):
-                /*
-                .nav-link.active-link::after { width: 80%; }
-                */
             }
         });
     };
@@ -98,63 +71,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', scrollHandler);
     scrollHandler(); // Run on load to set initial state
 
-
-    // --- 4. Animate on Scroll using Intersection Observer ---
-
-    // General observer for fade-in and slide-up effects
-    const animationObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        rootMargin: '0px 0px -50px 0px' // Trigger a bit before it's fully in view
-    });
-
-    // We need to add some base styles with JS for the animation to work,
-    // as we cannot modify the original CSS file.
-    const elementsToAnimate = document.querySelectorAll(
-        '.section-header, .about-content > div, .timeline-item, .skill-category, .award-card, .contact-content > div'
-    );
-
-    elementsToAnimate.forEach(el => {
-        // Create a style element to add the animation base styles
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .animate-on-scroll {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            }
-            .animate-on-scroll.in-view {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-        document.head.appendChild(style);
-
-        el.classList.add('animate-on-scroll');
-        animationObserver.observe(el);
-    });
-
-    // Specific observer for progress bars and charts
-    // This is needed because their animation is tied to inline style values.
+    // --- 4. Animate Progress Bars on Scroll ---
+    // This observer triggers the animation for skill bars and chart bars when they enter the viewport.
     const barObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const element = entry.target;
-                const finalValue = element.getAttribute('data-value');
+                
+                // The final value is read from the inline style in the HTML
+                const finalValue = element.style.width || element.style.height;
 
-                // The CSS animation runs on page load. This JS overrides it
-                // to trigger on scroll, using the 'transition' property instead.
+                // We override the initial CSS animation by directly setting the transition property
+                // and then the final value.
                 if (element.classList.contains('skill-progress')) {
                     element.style.width = finalValue;
                 } else if (element.classList.contains('bar')) {
                     element.style.height = finalValue;
                 }
-
+                
+                // Stop observing once the animation has been triggered
                 observer.unobserve(element);
             }
         });
@@ -162,20 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.5 // Trigger when 50% of the bar is visible
     });
 
-    // Prepare skill bars
+    // Prepare skill bars for observation
     document.querySelectorAll('.skill-progress').forEach(bar => {
         const finalWidth = bar.style.width;
-        bar.setAttribute('data-value', finalWidth);
-        bar.style.width = '0%'; // Set initial state
+        bar.style.width = '0%'; // Set initial state to 0 for animation
+        bar.style.transition = 'width 2s ease-out'; // Add transition via JS
         barObserver.observe(bar);
+        bar.style.width = finalWidth; // Re-apply final width to use as the target
     });
 
-    // Prepare chart bars
+    // Prepare chart bars for observation
     document.querySelectorAll('.dashboard-chart .bar').forEach(bar => {
         const finalHeight = bar.style.height;
-        bar.setAttribute('data-value', finalHeight);
-        bar.style.height = '0%'; // Set initial state
+        bar.style.height = '0%'; // Set initial state to 0 for animation
+        bar.style.transition = 'height 2s ease-out'; // Add transition via JS
         barObserver.observe(bar);
+        bar.style.height = finalHeight; // Re-apply final height to use as the target
     });
+
+    // A small fix to re-trigger the animation when observing
+    const reobserveBars = (selector) => {
+        document.querySelectorAll(selector).forEach(bar => {
+            barObserver.observe(bar);
+        });
+    };
+
+    // Initial observation
+    reobserveBars('.skill-progress');
+    reobserveBars('.dashboard-chart .bar');
 
 });

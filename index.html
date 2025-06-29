@@ -9,15 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Background Container for Sliding Effect -->
+    <div class="background-container">
+        <div class="bg-slide" data-section="home"></div>
+        <div class="bg-slide" data-section="about"></div>
+        <div class="bg-slide" data-section="experience"></div>
+        <div class="bg-slide" data-section="skills"></div>
+        <div class="bg-slide" data-section="achievements"></div>
+        <div class="bg-slide" data-section="contact"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <!-- 
-                  Recommended image size: 200x200px or any larger square.
-                  A transparent PNG is ideal for seamless integration.
-                  Place your image at 'static/images/image.png'
-                -->
                 <div class="logo-img-container">
                     <img src="static/images/image.png" alt="Nripendra Gangwar Logo">
                 </div>
@@ -39,419 +44,158 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-line">Hello, I'm</span>
-                    <span class="title-name">Nripendra Gangwar</span>
-                    <span class="title-role">CV Sales & Telematics Expert</span>
-                </h1>
-                <p class="hero-description">
-                    Driving Commercial Vehicle Sales & Connected Fleet Solutions at Tata Motors Ltd. 
-                    Specializing in data-driven growth strategies and business analytics in the automotive industry.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
-                    </a>
-                    <a href="static/pdf/nri_resume.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-download"></i>
-                        Download CV
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">8+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">Major Awards</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Success Rate</span>
+    <main class="content-wrapper">
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="container hero-content">
+                <div class="hero-text reveal-left">
+                    <h1 class="title-line">Hello, I'm</h1>
+                    <h2 class="title-name">Nripendra Gangwar</h2>
+                    <h3 class="title-role">CV Sales & Telematics Expert</h3>
+                    <p class="hero-description">
+                        Driving Commercial Vehicle Sales & Connected Fleet Solutions at Tata Motors Ltd. 
+                        Specializing in data-driven growth strategies and business analytics in the automotive industry.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                        <a href="static/pdf/nri_resume.pdf" class="btn btn-secondary" download>
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="profile-card">
-                    <div class="card-header">
-                        <div class="profile-image">
-                            <i class="fas fa-user-tie"></i>
+                <div class="hero-visual reveal-right">
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <div class="profile-image">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
                         </div>
-                        <div class="status-indicator"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Business Analyst</h3>
-                        <p>Automotive Industry</p>
-                        <div class="skills-preview">
-                            <span class="skill-tag">FleetEdge</span>
-                            <span class="skill-tag">CRM</span>
-                            <span class="skill-tag">Analytics</span>
+                        <div class="card-content">
+                            <h3>Business Analyst</h3>
+                            <p>Automotive Industry</p>
+                            <div class="skills-preview">
+                                <span class="skill-tag">FleetEdge</span>
+                                <span class="skill-tag">CRM</span>
+                                <span class="skill-tag">Analytics</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Get to know me</span>
-                <h2 class="section-title">About Me</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="text-card">
-                        <p>
-                            Multifaceted Commercial Vehicle Sales and Telematics professional with 8+ years at Tata Motors Ltd., 
-                            specializing in dealer channel performance, connected fleet solutions (FleetEdge), and business analytics.
-                        </p>
-                        <p>
-                            Adept at aligning GTME strategy, CRM systems (DMS/Salesforce), and data-backed forecasting to accelerate 
-                            territory growth and customer satisfaction. Recognized for boosting digital funnel conversion, executing 
-                            turnaround strategies at dealership level.
-                        </p>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Born: 28th Sept 1996</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Location: Delhi, India</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-flag"></i>
-                                <span>Nationality: Indian</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>B.Tech Mechanical Engg.</span>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Get to know me</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text reveal-left">
+                        <div class="text-card">
+                            <p>
+                                Multifaceted Commercial Vehicle Sales and Telematics professional with 8+ years at Tata Motors Ltd., 
+                                specializing in dealer channel performance, connected fleet solutions (FleetEdge), and business analytics.
+                            </p>
+                            <p>
+                                Adept at aligning GTME strategy, CRM systems (DMS/Salesforce), and data-backed forecasting to accelerate 
+                                territory growth and customer satisfaction.
+                            </p>
+                            <div class="info-grid">
+                                <div class="info-item"><i class="fas fa-calendar-alt"></i><span>Born: 28th Sept 1996</span></div>
+                                <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Location: Delhi, India</span></div>
+                                <div class="info-item"><i class="fas fa-flag"></i><span>Nationality: Indian</span></div>
+                                <div class="info-item"><i class="fas fa-graduation-cap"></i><span>B.Tech Mechanical Engg.</span></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="about-visual">
-                    <div class="visual-card">
+                    <div class="about-visual reveal-right">
                         <div class="automotive-dashboard">
                             <div class="dashboard-header">
                                 <h4><i class="fas fa-tachometer-alt"></i> FleetEdge Dashboard</h4>
                             </div>
                             <div class="dashboard-metrics">
-                                <div class="metric">
-                                    <span class="metric-value">95%</span>
-                                    <span class="metric-label">Renewal Rate</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">150+</span>
-                                    <span class="metric-label">Fleet Connections</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value">₹2.5Cr</span>
-                                    <span class="metric-label">Revenue Impact</span>
-                                </div>
+                                <div class="metric"><span class="metric-value">95%</span><span class="metric-label">Renewal Rate</span></div>
+                                <div class="metric"><span class="metric-value">150+</span><span class="metric-label">Fleet Connections</span></div>
+                                <div class="metric"><span class="metric-value">₹2.5Cr</span><span class="metric-label">Revenue Impact</span></div>
                             </div>
-                            <div class="dashboard-chart">
-                                <div class="chart-bars">
-                                    <div class="bar" style="height: 60%"></div>
-                                    <div class="bar" style="height: 80%"></div>
-                                    <div class="bar" style="height: 95%"></div>
-                                    <div class="bar" style="height: 75%"></div>
-                                    <div class="bar" style="height: 90%"></div>
-                                </div>
-                            </div>
+                            <div class="dashboard-chart"><div class="chart-bars"><div class="bar" style="height: 60%"></div><div class="bar" style="height: 80%"></div><div class="bar" style="height: 95%"></div><div class="bar" style="height: 75%"></div><div class="bar" style="height: 90%"></div></div></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">My Journey</span>
-                <h2 class="section-title">Professional Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Sales Manager – Channel Business</h3>
-                            <span class="timeline-date">Jul 2022 – Present</span>
-                        </div>
-                        <h4 class="timeline-company">Tata Motors Ltd.</h4>
-                        <p class="timeline-location">Posted at Triumph Auto Pvt. Ltd.</p>
-                        <ul class="timeline-details">
-                            <li>Drove FleetEdge telematics sales across multiple districts</li>
-                            <li>Executed CRM-based funnel tracking and digital follow-ups</li>
-                            <li>Conducted regular sales reviews and dealer team training</li>
-                            <li>Managed sales pipeline planning and GTME alignment</li>
-                        </ul>
-                    </div>
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">My Journey</span>
+                    <h2 class="section-title">Professional Experience</h2>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Sales Operations Executive</h3>
-                            <span class="timeline-date">Oct 2019 – Jun 2022</span>
-                        </div>
-                        <h4 class="timeline-company">Tata Motors Ltd.</h4>
-                        <p class="timeline-location">Posted at A&A Automobiles Pvt. Ltd.</p>
-                        <ul class="timeline-details">
-                            <li>Handled backend sales operations and demand forecasting</li>
-                            <li>Analyzed sales pipeline trends and dealer profitability</li>
-                            <li>Acted as bridge between regional office and dealer team</li>
-                            <li>Supported dealer training programs and performance reviews</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Sales Coordinator – ILCV LOB</h3>
-                            <span class="timeline-date">Apr 2018 – Sep 2019</span>
-                        </div>
-                        <h4 class="timeline-company">Tata Motors Ltd.</h4>
-                        <ul class="timeline-details">
-                            <li>Supported ILCV sales team in achieving volume targets</li>
-                            <li>Facilitated customer financing coordination</li>
-                            <li>Improved backend accuracy and reduced TAT</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Customer Service Executive</h3>
-                            <span class="timeline-date">Nov 2016 – Mar 2018</span>
-                        </div>
-                        <h4 class="timeline-company">Tech Mahindra Ltd.</h4>
-                        <ul class="timeline-details">
-                            <li>Delivered enterprise client support with performance awards</li>
-                            <li>Maintained SLAs and handled high-volume ticketing</li>
-                        </ul>
-                    </div>
+                <div class="timeline">
+                    <!-- Timeline items will be dynamically populated by JS for animation, but placed here for structure -->
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><div class="timeline-header"><h3>Sales Manager – Channel Business</h3><span class="timeline-date">Jul 2022 – Present</span></div><h4 class="timeline-company">Tata Motors Ltd.</h4><p class="timeline-location">Posted at Triumph Auto Pvt. Ltd.</p><ul class="timeline-details"><li>Drove FleetEdge telematics sales across multiple districts</li><li>Executed CRM-based funnel tracking and digital follow-ups</li><li>Managed sales pipeline planning and GTME alignment</li></ul></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><div class="timeline-header"><h3>Sales Operations Executive</h3><span class="timeline-date">Oct 2019 – Jun 2022</span></div><h4 class="timeline-company">Tata Motors Ltd.</h4><p class="timeline-location">Posted at A&A Automobiles Pvt. Ltd.</p><ul class="timeline-details"><li>Handled backend sales operations and demand forecasting</li><li>Analyzed sales pipeline trends and dealer profitability</li><li>Supported dealer training programs</li></ul></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><div class="timeline-header"><h3>Sales Coordinator – ILCV LOB</h3><span class="timeline-date">Apr 2018 – Sep 2019</span></div><h4 class="timeline-company">Tata Motors Ltd.</h4><ul class="timeline-details"><li>Supported ILCV sales team in achieving volume targets</li><li>Facilitated customer financing coordination</li></ul></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><div class="timeline-header"><h3>Customer Service Executive</h3><span class="timeline-date">Nov 2016 – Mar 2018</span></div><h4 class="timeline-company">Tech Mahindra Ltd.</h4><ul class="timeline-details"><li>Delivered enterprise client support with performance awards</li><li>Maintained SLAs and handled high-volume ticketing</li></ul></div></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">What I Do Best</span>
-                <h2 class="section-title">Key Skills</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-truck"></i>
-                        <h3>CV Sales & Telematics</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>FleetEdge Sales & Renewals</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Connected Vehicle Solutions</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Digital Funnel & Lead Conversion</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Channel Partner Enablement</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 92%"></div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">What I Do Best</span>
+                    <h2 class="section-title">Key Skills</h2>
                 </div>
-
-                <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-chart-bar"></i>
-                        <h3>Business Analytics & CRM</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>GTME Planning & Forecasting</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>DMS / Salesforce</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Claim & Inventory Management</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 87%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-users"></i>
-                        <h3>Team & Customer Focus</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>Sales Team Coaching</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 93%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Financier Engagement</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Customer Retention (SSI/NPS)</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 91%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-category reveal-up"><div class="category-header"><i class="fas fa-truck"></i><h3>CV Sales & Telematics</h3></div><div class="skill-list"><div class="skill-item"><span>FleetEdge Sales & Renewals</span><div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div></div><div class="skill-item"><span>Connected Vehicle Solutions</span><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div><div class="skill-item"><span>Channel Partner Enablement</span><div class="skill-bar"><div class="skill-progress" style="width: 92%"></div></div></div></div></div>
+                    <div class="skill-category reveal-up" style="--reveal-delay: 0.2s;"><div class="category-header"><i class="fas fa-chart-bar"></i><h3>Business Analytics & CRM</h3></div><div class="skill-list"><div class="skill-item"><span>GTME Planning & Forecasting</span><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div><div class="skill-item"><span>DMS / Salesforce</span><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div><div class="skill-item"><span>Claim & Inventory Management</span><div class="skill-bar"><div class="skill-progress" style="width: 87%"></div></div></div></div></div>
+                    <div class="skill-category reveal-up" style="--reveal-delay: 0.4s;"><div class="category-header"><i class="fas fa-users"></i><h3>Team & Customer Focus</h3></div><div class="skill-list"><div class="skill-item"><span>Sales Team Coaching</span><div class="skill-bar"><div class="skill-progress" style="width: 93%"></div></div></div><div class="skill-item"><span>Customer Retention (SSI/NPS)</span><div class="skill-bar"><div class="skill-progress" style="width: 91%"></div></div></div></div></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Recognition</span>
-                <h2 class="section-title">Awards & Achievements</h2>
-            </div>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="award-content">
-                        <h3>FleetEdge Renewal Excellence</h3>
-                        <p>Highest renewal rate in Q2 FY 2024-25</p>
-                        <span class="award-year">2025</span>
-                    </div>
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Recognition</span>
+                    <h2 class="section-title">Awards & Achievements</h2>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <div class="award-content">
-                        <h3>Best Turnaround Player</h3>
-                        <p>Successfully revived underperforming dealership</p>
-                        <span class="award-year">2022</span>
-                    </div>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="award-content">
-                        <h3>Master of Analytics</h3>
-                        <p>Excellence in data-driven decision making</p>
-                        <span class="award-year">2021</span>
-                    </div>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="award-content">
-                        <h3>Sales Champion</h3>
-                        <p>Outstanding sales performance and leadership</p>
-                        <span class="award-year">2019</span>
-                    </div>
+                <div class="awards-grid">
+                    <div class="award-card reveal-up"><div class="award-icon"><i class="fas fa-trophy"></i></div><div class="award-content"><h3>FleetEdge Renewal Excellence</h3><p>Highest renewal rate in Q2 FY 2024-25</p><span class="award-year">2025</span></div></div>
+                    <div class="award-card reveal-up" style="--reveal-delay: 0.2s;"><div class="award-icon"><i class="fas fa-medal"></i></div><div class="award-content"><h3>Best Turnaround Player</h3><p>Successfully revived underperforming dealership</p><span class="award-year">2022</span></div></div>
+                    <div class="award-card reveal-up" style="--reveal-delay: 0.4s;"><div class="award-icon"><i class="fas fa-star"></i></div><div class="award-content"><h3>Master of Analytics</h3><p>Excellence in data-driven decision making</p><span class="award-year">2021</span></div></div>
+                    <div class="award-card reveal-up" style="--reveal-delay: 0.6s;"><div class="award-icon"><i class="fas fa-crown"></i></div><div class="award-content"><h3>Sales Champion</h3><p>Outstanding sales performance and leadership</p><span class="award-year">2019</span></div></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Let's Connect</span>
-                <h2 class="section-title">Get In Touch</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Let's Connect</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                </div>
+                <div class="contact-content reveal-up">
                     <div class="contact-card">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Phone</h4>
-                                <p>+91 9889381124</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p>nripendragangwar23@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Location</h4>
-                                <p>Delhi, India</p>
-                            </div>
-                        </div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-details"><h4>Phone</h4><p>+91 9889381124</p></div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><h4>Email</h4><p>nripendragangwar23@gmail.com</p></div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-details"><h4>Location</h4><p>Delhi, India</p></div></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">

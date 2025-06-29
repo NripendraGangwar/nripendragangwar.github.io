@@ -6,7 +6,7 @@
 }
 
 :root {
-    /* NEW: Vibrant, Professional & Colorful Palette */
+    /* Vibrant, Professional & Colorful Palette */
     --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-about: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     --gradient-experience: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
@@ -16,6 +16,9 @@
 
     --text-light: #ffffff;
     --text-dark: #1e293b;
+    --text-muted: rgba(255, 255, 255, 0.6); /* NEW: For darker, less prominent text */
+    --base-dark-bg: #1a1a2e; /* Base color for curtains */
+
     --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.37);
     --shadow-heavy: 0 15px 35px rgba(31, 38, 135, 0.5);
     --border-radius: 20px;
@@ -30,11 +33,11 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-light);
-    background-color: #1a1a2e; /* Fallback background */
+    background-color: var(--base-dark-bg); /* Fallback and curtain color */
     overflow-x: hidden;
 }
 
-/* NEW: Background Sliding Effect Structure */
+/* NEW: Curtain Split Background Effect */
 .background-container {
     position: fixed;
     top: 0;
@@ -48,12 +51,38 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+    overflow: hidden; /* Crucial for containing the pseudo-elements */
 }
 
-.bg-slide.is-visible {
-    opacity: 1;
+/* The "curtains" that will slide away */
+.bg-slide::before,
+.bg-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50.5%; /* Overlap slightly to prevent pixel gaps */
+    height: 100%;
+    background-color: var(--base-dark-bg);
+    z-index: 1;
+    /* Animate the transform property for performance */
+    transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.bg-slide::before {
+    left: 0;
+}
+
+.bg-slide::after {
+    right: 0;
+}
+
+/* The animation trigger */
+.bg-slide.is-visible::before {
+    transform: translateX(-100%);
+}
+
+.bg-slide.is-visible::after {
+    transform: translateX(100%);
 }
 
 /* Assigning gradients to each background slide */
@@ -64,7 +93,6 @@ body {
 .bg-slide[data-section="achievements"] { background: var(--gradient-achievements); }
 .bg-slide[data-section="contact"] { background: var(--gradient-contact); }
 
-/* Main content wrapper to scroll over fixed backgrounds */
 .content-wrapper {
     position: relative;
     z-index: 1;
@@ -80,9 +108,10 @@ body {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
+    transition: top 0.4s ease-in-out;
 }
 
-/* All other styles adapted for glassmorphism and 3D effects */
+/* ... (rest of navbar styles are unchanged) ... */
 .nav-container { max-width: 1200px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
 .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
 .logo-img-container { width: 45px; height: 45px; border-radius: 50%; overflow: hidden; transition: var(--transition); border: 2px solid rgba(255,255,255,0.5); }
@@ -94,8 +123,19 @@ body {
 .nav-toggle { display: none; }
 .bar { width: 25px; height: 3px; background: var(--text-light); margin: 3px 0; transition: 0.3s; border-radius: 5px; }
 
-/* Hero Section */
-section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center; }
+/* MODIFIED: Section Vertical Sizing */
+section {
+    padding: 5rem 0; /* Reduced padding for a tighter layout */
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure sections are layered correctly */
+    z-index: 1;
+}
+section#home {
+    min-height: 100vh; /* Hero section remains full height */
+}
+
+/* ... (Hero content styles are mostly unchanged) ... */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .hero-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
 .title-line { font-size: 1.5rem; font-weight: 500; }
@@ -126,6 +166,7 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
     box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.3);
 }
 
+/* ... (other card content styles are unchanged) ... */
 .card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
 .profile-image { width: 80px; height: 80px; background: var(--text-light); color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
 .card-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -137,7 +178,7 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
 .section-subtitle { font-weight: 600; letter-spacing: 2px; font-size: 0.9rem; }
 .section-title { font-size: 3rem; font-weight: 700; margin-top: 0.5rem; }
 
-/* About Section */
+/* ... (About Section styles are unchanged) ... */
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
 .info-item { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 10px; }
@@ -149,8 +190,12 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
 .dashboard-chart { height: 100px; } .chart-bars { display: flex; align-items: end; justify-content: space-around; height: 100%; }
 .bar { width: 20px; background: var(--text-light); border-radius: 4px 4px 0 0; }
 
-/* Timeline */
-.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+/* MODIFIED: Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 1000px; /* WIDER timeline for a better desktop view */
+    margin: 0 auto;
+}
 .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transform: translateX(-50%); }
 .timeline-item { padding: 1rem 0; position: relative; width: 50%; }
 .timeline-item:nth-child(odd) { left: 0; padding-right: 40px; }
@@ -159,11 +204,17 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
 .timeline-item:nth-child(odd) .timeline-marker { right: -10px; }
 .timeline-item:nth-child(even) .timeline-marker { left: -10px; }
 .timeline-content { transform: none; } /* Override card base transform */
+.timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
 .timeline-header h3 { font-size: 1.2rem; }
+.timeline-date {
+    color: var(--text-muted); /* DARKER, muted color for dates */
+    font-weight: 500;
+}
+.timeline-company { margin-bottom: 0.5rem; }
 .timeline-details li { list-style: none; padding-left: 1.5rem; position: relative; }
 .timeline-details li::before { content: '▶'; position: absolute; left: 0; }
 
-/* Skills & Awards */
+/* ... (Skills, Awards, Contact, Footer styles are mostly unchanged) ... */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
 .skill-category, .award-card { transform: none; }
 .skill-category:hover, .award-card:hover { transform: translateY(-10px) scale(1.05); }
@@ -173,8 +224,6 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
 .award-card { text-align: center; }
 .award-icon { width: 70px; height: 70px; background: var(--text-light); color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
 .award-year { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.4rem 1rem; border-radius: 20px; margin-top: 1rem; }
-
-/* Contact & Footer */
 .contact-content { display: flex; justify-content: center; }
 .contact-card { transform: none; } .contact-card:hover { transform: translateY(-10px) scale(1.05); }
 .contact-item { display: flex; align-items: center; gap: 1.5rem; }
@@ -210,7 +259,7 @@ section { padding: 6rem 0; min-height: 100vh; display: flex; align-items: center
     .title-name { font-size: 2.8rem; } .section-title { font-size: 2.2rem; }
     .timeline::before { left: 10px; }
     .timeline-item, .timeline-item:nth-child(even) { left: 0; width: 100%; padding-left: 30px; text-align: left; }
+    .timeline-item:nth-child(odd) { text-align: left; padding-right: 0; }
     .timeline-item:nth-child(odd) .timeline-header { flex-direction: row; }
-    .timeline-item:nth-child(odd) { text-align: left; }
     .timeline-marker, .timeline-item:nth-child(odd) .timeline-marker { left: 0px; }
 }
